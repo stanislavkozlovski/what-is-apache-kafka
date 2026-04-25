@@ -1,0 +1,6 @@
+interface:
+  display_name: "Apache Kafka Reference"
+  short_description: "End-to-end Kafka explainer for Codex. Mention as $ak."
+
+policy:
+  allow_implicit_invocation: true

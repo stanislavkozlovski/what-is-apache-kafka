@@ -10,8 +10,9 @@ The best single-resource explanation of Apache Kafka out there. (34 minute read 
 | --- | --- |
 | What is this? | [The What](#the-what) |
 | Read the book | [Chapters](#chapters) |
-| Regenerate images | [Scripts](#scripts) |
-| Original article | [Source](#source) |
+| Install in Claude Code | [Claude Install](#install-in-claude-code) |
+| Install in Codex as a raw skill | [Codex Skill Install](#install-in-openai-codex-as-a-raw-skill) |
+| Install in Codex as a plugin | [Codex Plugin Install](#install-as-a-codex-plugin) |
 
 <br>
 
@@ -35,3 +36,59 @@ This repo is a simple markdown-friendly chapterized version of the article [*Wha
 8. [Other Kafka Components](chapters/07-other-components.md) — Streams, Schema Registry, Connect
 9. [Conclusion](chapters/08-conclusion.md) — when to use Kafka, when not to, the wider ecosystem
 
+# Install as an Agent Skill
+
+The repo root *is* the skill folder — same `SKILL.md` works for both Claude Code and OpenAI Codex; only the install path differs. Explicit mention name: `$ak`.
+
+## Install in Claude Code
+
+Symlink (or clone) into `~/.claude/skills/`:
+
+```sh
+ln -s "$(pwd)" ~/.claude/skills/apache-kafka
+```
+or:
+```sh
+git clone https://github.com/stanislavkozlovski/what-is-apache-kafka.git ~/.claude/skills/apache-kafka
+```
+
+## Install in OpenAI Codex as a Raw Skill
+
+Symlink (or clone) into `~/.agents/skills/`:
+
+```sh
+ln -s "$(pwd)" ~/.agents/skills/apache-kafka
+```
+or:
+
+```sh
+git clone https://github.com/stanislavkozlovski/what-is-apache-kafka.git  ~/.agents/skills/apache-kafka
+```
+
+The skill triggers on Kafka questions — internals (brokers, partitions, KRaft, replication, consumer groups, transactions, tiered storage), components (Streams, Connect, Schema Registry), or fit assessment ("is Kafka right for X?"). On trigger, the agent reads the relevant chapter and answers from it instead of guessing.
+
+Try it with:
+
+```text
+$ak explain Kafka consumer groups
+```
+
+## Install as a Codex Plugin
+
+We also have a Codex plugin scaffold:
+
+- marketplace: `.agents/plugins/marketplace.json`
+- plugin: `plugins/apache-kafka/`
+- bundled skill name: `$ak`
+
+Install it from GitHub:
+
+```sh
+codex plugin marketplace add stanislavkozlovski/what-is-apache-kafka --ref main --sparse .agents/plugins --sparse plugins
+```
+
+## License And Policies
+
+- License: [Apache 2.0](LICENSE)
+- Privacy: [PRIVACY.md](PRIVACY.md)
+- Terms: [TERMS.md](TERMS.md)

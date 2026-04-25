@@ -1,0 +1,36 @@
+{
+  "name": "apache-kafka",
+  "version": "0.1.1",
+  "description": "Chapterized Apache Kafka reference skill for Codex.",
+  "author": {
+    "name": "Stanislav Kozlovski",
+    "email": "stanislav@2minutestreaming.com"
+  },
+  "homepage": "https://github.com/stanislavkozlovski/what-is-apache-kafka",
+  "repository": "https://github.com/stanislavkozlovski/what-is-apache-kafka",
+  "license": "Apache-2.0",
+  "keywords": [
+    "apache-kafka",
+    "kafka",
+    "streaming",
+    "event-driven",
+    "reference"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Apache Kafka",
+    "shortDescription": "Chapterized Kafka reference skill. Mention as $ak.",
+    "longDescription": "Answer Apache Kafka questions from a chapterized reference instead of relying on generic recall.",
+    "developerName": "Stanislav Kozlovski",
+    "category": "Productivity",
+    "websiteURL": "https://github.com/stanislavkozlovski/what-is-apache-kafka",
+    "privacyPolicyURL": "https://github.com/stanislavkozlovski/what-is-apache-kafka/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/stanislavkozlovski/what-is-apache-kafka/blob/main/TERMS.md",
+    "defaultPrompt": [
+      "Use $ak to explain Kafka consumer groups.",
+      "Use $ak to compare KRaft and ZooKeeper.",
+      "Use $ak to assess Kafka for event pipelines."
+    ],
+    "brandColor": "#d14f35"
+  }
+}

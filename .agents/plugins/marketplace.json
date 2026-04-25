@@ -1,0 +1,20 @@
+{
+  "name": "what-is-apache-kafka",
+  "interface": {
+    "displayName": "What Is Apache Kafka"
+  },
+  "plugins": [
+    {
+      "name": "apache-kafka",
+      "source": {
+        "source": "local",
+        "path": "./plugins/apache-kafka"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
