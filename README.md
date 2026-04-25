@@ -10,6 +10,7 @@ The best single-resource explanation of Apache Kafka out there. (34 minute read 
 | --- | --- |
 | What is this? | [The What](#the-what) |
 | Read the book | [Chapters](#chapters) |
+| Install with NPX | [NPX Install](#npx-install) |
 | Install in Claude Code | [Claude Install](#install-in-claude-code) |
 | Install in Codex as a raw skill | [Codex Skill Install](#install-in-openai-codex-as-a-raw-skill) |
 | Install in Codex as a plugin | [Codex Plugin Install](#install-as-a-codex-plugin) |
@@ -40,6 +41,14 @@ This repo is a simple markdown-friendly chapterized version of the article [*Wha
 
 The repo root *is* the skill folder — same `SKILL.md` works for both Claude Code and OpenAI Codex; only the install path differs. Explicit mention name: `$ak`.
 
+## NPX Install
+
+If you use [skills.sh](https://skills.sh/), install it with:
+
+```sh
+npx skills add stanislavkozlovski/what-is-apache-kafka
+```
+
 ## Install in Claude Code
 
 Symlink (or clone) into `~/.claude/skills/`:
@@ -52,7 +61,14 @@ or:
 git clone https://github.com/stanislavkozlovski/what-is-apache-kafka.git ~/.claude/skills/apache-kafka
 ```
 
-## Install in OpenAI Codex as a Raw Skill
+## Install in OpenAI Codex
+
+Choose one path:
+
+- Want `$ak` available directly in Codex: use the skill install path below
+- Want to install it as a Codex plugin: use the plugin path below
+
+### Option A: Direct Skill Install
 
 Symlink (or clone) into `~/.agents/skills/`:
 
@@ -65,6 +81,15 @@ or:
 git clone https://github.com/stanislavkozlovski/what-is-apache-kafka.git  ~/.agents/skills/apache-kafka
 ```
 
+or:
+
+```sh
+# inside Codex
+$skill-installer stanislavkozlovski/what-is-apache-kafka
+```
+
+This path is the simplest one if your goal is just to use `$ak`.
+
 The skill triggers on Kafka questions — internals (brokers, partitions, KRaft, replication, consumer groups, transactions, tiered storage), components (Streams, Connect, Schema Registry), or fit assessment ("is Kafka right for X?"). On trigger, the agent reads the relevant chapter and answers from it instead of guessing.
 
 Try it with:
@@ -73,7 +98,7 @@ Try it with:
 $ak explain Kafka consumer groups
 ```
 
-## Install as a Codex Plugin
+### Option B: Codex Plugin Install
 
 We also have a Codex plugin scaffold:
 
@@ -81,10 +106,27 @@ We also have a Codex plugin scaffold:
 - plugin: `plugins/apache-kafka/`
 - bundled skill name: `$ak`
 
-Install it from GitHub:
+Step 1: add the marketplace from GitHub:
 
 ```sh
 codex plugin marketplace add stanislavkozlovski/what-is-apache-kafka --ref main --sparse .agents/plugins --sparse plugins
+```
+
+Step 2: inside Codex, install the plugin from the plugin browser:
+
+```text
+/plugins
+```
+
+Then open the `what-is-apache-kafka` marketplace, open `Apache Kafka`, and select `Install plugin`.
+
+Important: step 1 only adds the marketplace. It does not install the plugin, and it does not make `$ak` available by itself.
+
+If your goal is only to get `$ak`, use Option A instead:
+
+```sh
+# inside Codex
+$skill-installer stanislavkozlovski/what-is-apache-kafka
 ```
 
 ## License And Policies
